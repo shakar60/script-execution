@@ -28,8 +28,8 @@ local function sendNotification()
     local data = {
         ["embeds"] = {
             {
-                ["title"] = "Script Executed",
-                ["description"] = "Your script has been executed.",
+                ["title"] = "Script Executed:",
+                ["description"] = "Universal Shakars Hub Has Been Executed.",
                 ["type"] = "rich",
                 ["color"] = tonumber("000000"), -- Black
                 ["thumbnail"] = {
