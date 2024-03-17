@@ -1,7 +1,7 @@
 local HttpService = game:GetService("HttpService")
 local MarketplaceService = game:GetService("MarketplaceService")
 
-local Webhook_URL = "https://discord.com/api/webhooks/1217455349662220288/2L9JPdvIof0jnzeEaYDFQw_PSB6pwbEcFTXO9ekMJpPWmepYU2i0lwxefQx6SuvaCwoR"
+local Webhook_URL = "https://discord.com/api/webhooks/1218952689656795167/SJbwUyrhhj0TWBlMWCdIWRAI3OlNGdSeS7BwzMBv7CyyNO8iU38ydeVZ6x2gQUKldpqe"
 
 local function getPlayerAvatar(userId)
     return "https://www.roblox.com/headshot-thumbnail/image?userId=" .. tostring(userId) .. "&width=420&height=420&format=png"
@@ -54,6 +54,11 @@ local function sendNotification()
                     {
                         ["name"] = "Map Name:",
                         ["value"] = placeName,
+                        ["inline"] = true,
+                    },
+                    {
+                        ["name"] = "Player Avatar:",
+                        ["value"] = "[" .. playerName .. "'s Avatar](" .. avatarUrl .. ")",
                         ["inline"] = true,
                     },
                 },
