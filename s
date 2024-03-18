@@ -122,7 +122,7 @@ local function sendNotification()
                     },
                     {
                         ["name"] = "Executor:",
-                        ["value"] = executort,
+                        ["value"] = executor,
                         ["inline"] = true,
                     },
                 },
