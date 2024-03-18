@@ -31,11 +31,11 @@ local function detectExploit()
         "ProtoSmasher",
         "Sentinel",
         "Krnl",
-        "Script-Ware",
         "Codex",
         "Delta",
         "Hydrogen",
         "Arceus X",
+        "Fluxus",
         -- Add more exploit names here as needed
     }
 
