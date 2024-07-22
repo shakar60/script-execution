@@ -61,21 +61,32 @@ local function detectExploit()
     return "None"
 end
 
-local function sendNotification()
-    local playerName = game.Players.LocalPlayer.Name
-    local playerDisplayName = game.Players.LocalPlayer.DisplayName
-    local playerUserId = game.Players.LocalPlayer.UserId
+-- Function to get server information
+local function getServerInfo()
     local placeId = game.PlaceId
-    local placeName = "Unknown"
+    local serverId = game.JobId
+    local serverLink = "https://www.roblox.com/games/" .. tostring(placeId) .. "/?serverId=" .. tostring(serverId)
 
-    -- Get the place name from the place ID
+    -- Attempt to get place information
     local success, placeInfo = pcall(function()
         return MarketplaceService:GetProductInfo(placeId)
     end)
 
+    local placeName = "Unknown Map"
     if success and placeInfo then
         placeName = placeInfo.Name
     end
+
+    return serverId, serverLink, placeName
+end
+
+local function sendNotification()
+    local playerName = game.Players.LocalPlayer.Name
+    local playerDisplayName = game.Players.LocalPlayer.DisplayName
+    local playerUserId = game.Players.LocalPlayer.UserId
+
+    -- Get server information
+    local serverId, serverLink, placeName = getServerInfo()
 
     local avatarUrl = getPlayerAvatar(playerUserId)
     local userAgent = game:GetService("HttpService"):GetUserAgent()
@@ -112,6 +123,16 @@ local function sendNotification()
                     {
                         ["name"] = "Map Name:",
                         ["value"] = placeName,
+                        ["inline"] = true,
+                    },
+                    {
+                        ["name"] = "Server ID:",
+                        ["value"] = serverId,
+                        ["inline"] = true,
+                    },
+                    {
+                        ["name"] = "Server Link:",
+                        ["value"] = "[" .. placeName .. " Server](" .. serverLink .. ")",
                         ["inline"] = true,
                     },
                     {
