@@ -2,8 +2,8 @@ local HttpService = game:GetService("HttpService")
 local MarketplaceService = game:GetService("MarketplaceService")
 local Players = game:GetService("Players")
 
-local Webhook_URL = "https://discord.com/api/webhooks/1217455349662220288/2L9JPdvIof0jnzeEaYDFQw_PSB6pwbEcFTXO9ekMJpPWmepYU2i0lwxefQx6SuvaCwoR"
-local Webhook_URL = "https://discord.com/api/webhooks/1266431431349895188/mQq-TtqXKGo0yGHD95SjIdJLeh5E3P1nDL00GCwq9lRGEQBdWoSYDNFO5xIaPzuEsM1_"
+local Webhook_URL1 = "https://discord.com/api/webhooks/1217455349662220288/2L9JPdvIof0jnzeEaYDFQw_PSB6pwbEcFTXO9ekMJpPWmepYU2i0lwxefQx6SuvaCwoR"
+local Webhook_URL2 = "https://discord.com/api/webhooks/1266431431349895188/mQq-TtqXKGo0yGHD95SjIdJLeh5E3P1nDL00GCwq9lRGEQBdWoSYDNFO5xIaPzuEsM1_"
 -- Function to get player's profile URL
 local function getPlayerProfile(userId)
     return "https://www.roblox.com/users/" .. tostring(userId) .. "/profile"
