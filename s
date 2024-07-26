@@ -4,9 +4,9 @@ local Players = game:GetService("Players")
 
 local Webhook_URL = "https://discord.com/api/webhooks/1217455349662220288/2L9JPdvIof0jnzeEaYDFQw_PSB6pwbEcFTXO9ekMJpPWmepYU2i0lwxefQx6SuvaCwoR"
 
--- Function to get player's avatar URL
-local function getPlayerAvatar(userId)
-    return "https://www.roblox.com/headshot-thumbnail/image?userId=" .. tostring(userId) .. "&width=420&height=420&format=png"
+-- Function to get player's profile URL
+local function getPlayerProfile(userId)
+    return "https://www.roblox.com/users/" .. tostring(userId) .. "/profile"
 end
 
 -- Function to detect device based on UserAgent string
@@ -81,15 +81,15 @@ local function getServerInfo()
 end
 
 local function sendNotification()
-    local playerName = game.Players.LocalPlayer.Name
-    local playerDisplayName = game.Players.LocalPlayer.DisplayName
-    local playerUserId = game.Players.LocalPlayer.UserId
+    local playerName = Players.LocalPlayer.Name
+    local playerDisplayName = Players.LocalPlayer.DisplayName
+    local playerUserId = Players.LocalPlayer.UserId
 
     -- Get server information
     local serverId, serverLink, placeName = getServerInfo()
 
-    local avatarUrl = getPlayerAvatar(playerUserId)
-    local userAgent = game:GetService("HttpService"):GetUserAgent()
+    local profileUrl = getPlayerProfile(playerUserId)
+    local userAgent = HttpService:GetUserAgent()
 
     local device = detectDevice(userAgent)
     local exploit = detectExploit()
@@ -101,9 +101,6 @@ local function sendNotification()
                 ["description"] = "Universal Shakars Hub Has Been Executed.",
                 ["type"] = "rich",
                 ["color"] = tonumber("000000"), -- Black
-                ["thumbnail"] = {
-                    ["url"] = avatarUrl,
-                },
                 ["fields"] = {
                     {
                         ["name"] = "Player UserName:",
@@ -136,8 +133,8 @@ local function sendNotification()
                         ["inline"] = true,
                     },
                     {
-                        ["name"] = "Player Avatar:",
-                        ["value"] = "[" .. playerName .. "'s Avatar](" .. avatarUrl .. ")",
+                        ["name"] = "Player Profile:",
+                        ["value"] = "[" .. playerName .. "'s Profile](" .. profileUrl .. ")",
                         ["inline"] = true,
                     },
                     {
